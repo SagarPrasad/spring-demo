@@ -1,0 +1,43 @@
+spring:
+  application:
+    name: Sagar-Demo
+
+server:
+  contextPath : /test
+
+management.endpoints.web.exposure.include: hystrix.stream
+config.name: static-yaml
+field.name: field-yaml
+
+com.example.config:
+  sampleList:
+    - 'List1'
+    - 'List2'
+    - 'List3'
+  sampleString: sagar
+  sampleBoolean: true
+  sampleDecimal: 12.0
+  sampleInteger: 23
+  sampleint: -1
+  sampleMap:
+    MAP1: VALUE1
+    MAP2: VALUE2
+  sampleSet: A,B,C
+
+
+togglz:
+  console:
+    enabled: true
+    path: /togglz-console
+    secured: false
+    feature-admin-authority:
+  endpoint:
+    id: togglz
+    enabled: true
+    sensitive: true
+  feature-enums: com.example.springdemo.togglz.CustomEnumTogglzFeature
+  features:
+    FEATURE_ONE:
+      enabled: false
+    FEATURE_TWO:
+      enabled: true
