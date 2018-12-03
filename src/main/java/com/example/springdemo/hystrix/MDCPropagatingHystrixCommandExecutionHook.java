@@ -24,32 +24,27 @@ public class MDCPropagatingHystrixCommandExecutionHook extends HystrixCommandExe
 
   @Override
   public <T> void onStart(HystrixInvokable<T> commandInstance) {
-    System.out.println("---------------------------Initializing -----------------------");
     extractMDCContext();
   }
 
   @Override
   public <T> void onThreadStart(HystrixInvokable<T> commandInstance) {
-    System.out.println("---------------------------Setting-----------------------");
     setupMDCContext();
   }
 
 
   @Override
   public <T> void onUnsubscribe(HystrixInvokable<T> commandInstance) {
-    System.out.println("---------------------------ReSetting-----------------------");
     cleanup();
   }
 
   @Override
   public <T> void onFallbackStart(HystrixInvokable<T> commandInstance) {
-    System.out.println("---------------------------Fallback Start-----------------------");
     setupMDCContext();
   }
 
   @Override
   public <T> void onFallbackSuccess(HystrixInvokable<T> commandInstance) {
-    System.out.println("---------------------------Fallback Success-----------------------");
     cleanup();
   }
 

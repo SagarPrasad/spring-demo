@@ -17,7 +17,6 @@ import java.util.Map;
 @Slf4j
 public class ThreadLocalPropogator implements Function<Runnable, Runnable> {
 
-
 // https://jmnarloch.wordpress.com/2016/07/06/spring-boot-hystrix-and-threadlocals/
 
   ThreadLocalPropogator() {

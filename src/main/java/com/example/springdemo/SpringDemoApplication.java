@@ -1,13 +1,12 @@
 package com.example.springdemo;
 
-import com.example.springdemo.hystrix.MDCPropagatingHystrixCommandExecutionHook;
 import com.example.springdemo.rx.LocalBean;
 import com.example.springdemo.togglz.CustomEnumTogglzFeature;
-import com.netflix.hystrix.strategy.HystrixPlugins;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.netflix.hystrix.EnableHystrix;
+import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Primary;
 import org.springframework.context.annotation.Scope;
@@ -17,13 +16,12 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 import org.togglz.core.manager.EnumBasedFeatureProvider;
 import org.togglz.core.spi.FeatureProvider;
 
-import javax.annotation.PostConstruct;
-
 @Slf4j
 @SpringBootApplication
 @EnableHystrix
 @EnableRetry
 @EnableScheduling
+@EnableFeignClients
 public class SpringDemoApplication {
 
 	public static void main(String[] args) throws Exception {
@@ -47,11 +45,12 @@ public class SpringDemoApplication {
 		return new EnumBasedFeatureProvider(CustomEnumTogglzFeature.class);
 	}
 
-	@PostConstruct
+	/*@PostConstruct
 	public void setupHystrix() {
+		System.out.println("********************EXECUTING**********************************");
 		HystrixPlugins.reset();
 		HystrixPlugins.getInstance().registerCommandExecutionHook(new MDCPropagatingHystrixCommandExecutionHook());
-	}
+	}*/
 
 	/*@Bean
 	public ServletRegistrationBean servletRegistrationBean(){

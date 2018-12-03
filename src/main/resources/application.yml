@@ -41,3 +41,18 @@ togglz:
       enabled: false
     FEATURE_TWO:
       enabled: true
+
+mdc:
+  hystrix:
+    enable: true
+  rx:
+    enable: true
+
+
+feign:
+  client:
+    config:
+      custom:
+        connectTimeout: 1000
+        readTimeout: 1000
+        loggerLevel: full

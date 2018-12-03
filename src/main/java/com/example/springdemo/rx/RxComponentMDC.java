@@ -6,7 +6,6 @@
 package com.example.springdemo.rx;
 
 import io.reactivex.Flowable;
-import io.reactivex.plugins.RxJavaPlugins;
 import io.reactivex.schedulers.Schedulers;
 import lombok.extern.slf4j.Slf4j;
 import org.slf4j.MDC;
@@ -16,8 +15,6 @@ import org.springframework.stereotype.Component;
 
 import java.util.HashMap;
 import java.util.Map;
-
-import javax.annotation.PostConstruct;
 
 /**
  * @author sagar
@@ -45,7 +42,7 @@ public class RxComponentMDC {
     testMap.put("KEY", "Parent-MDC");
 
     MDC.setContextMap(testMap);
-    RxJavaPlugins.setScheduleHandler(new ThreadLocalPropogator());
+    //RxJavaPlugins.setScheduleHandler(new ThreadLocalPropogator());
     System.out.println(MDC.get("KEY"));
     rxComponentMDC.backCallable();
 
@@ -140,10 +137,10 @@ public class RxComponentMDC {
 
   }
 
-  @PostConstruct
+  /*@PostConstruct
   void init() {
     System.out.println("Initializing  Schedular Handler");
     RxJavaPlugins.setScheduleHandler(new ThreadLocalPropogator());
-  }
+  }*/
 
 }

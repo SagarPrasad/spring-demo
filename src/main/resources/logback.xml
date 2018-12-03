@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+
+   <!--<turboFilter class="ch.qos.logback.classic.turbo.DynamicThresholdFilter">
+        <Key>X-Log-Level</Key>
+        <OnHigherOrEqual>ACCEPT</OnHigherOrEqual>
+        <OnLower>DENY</OnLower>
+        <MDCValueLevelPair>
+            <value>DEVELOPER</value>
+            <level>DEBUG</level>
+        </MDCValueLevelPair>
+    </turboFilter>
+    -->
+
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <!--<filter class="ch.qos.logback.core.filter.EvaluatorFilter">
+            <evaluator>
+                <expression>return (("DEVELOPER").equals(mdc.get("X-Log-Level")));</expression>
+                <OnMatch>ACCEPT</OnMatch>
+                <OnMismatch>NEUTRAL</OnMismatch>
+            </evaluator>
+        </filter>-->
+        <encoder>
+            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <logger name="com.example.springdemo" level="info" additivity="false">
+        <appender-ref ref="STDOUT" />
+    </logger>
+
+    <root level="error">
+        <appender-ref ref="STDOUT" />
+    </root>
+
+</configuration>
