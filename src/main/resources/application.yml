@@ -49,6 +49,8 @@ mdc:
     enable: true
 
 
+logging.level.com.example.springdemo.feign.hystrix.CustomFeignClient: DEBUG
+
 feign:
   client:
     config:

@@ -5,6 +5,7 @@
 
 package com.example.springdemo.config;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.exception.ExceptionUtils;
 import org.aspectj.lang.ProceedingJoinPoint;
@@ -68,6 +69,11 @@ public class DynamicConfigInterceptor {
         String propValue = request.getHeader(prop);
         if (Boolean.valueOf(debug) && excludeFromRequestScope && null != propValue) {
           PropertyEditor editor = PropertyEditorManager.findEditor(method.getReturnType());
+          // refactor - properly
+          if(null == editor) {
+            ObjectMapper objectMapper = new ObjectMapper();
+            return objectMapper.readValue(propValue, method.getReturnType());
+          }
           editor.setAsText(propValue);
           log.info("op=dynamicConfigChangeWithAnnotation, status=OK, desc=updating config for: {} to: {}", prop, propValue);
           return editor.getValue();

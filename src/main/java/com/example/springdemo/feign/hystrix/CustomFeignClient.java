@@ -22,4 +22,8 @@ public interface CustomFeignClient {
   @RequestMapping(method = RequestMethod.GET, value = "/customService")
   String getIntegrationResponse();
 
+  @EnableDynamicMockValue(value = "custom-feignService")
+  @RequestMapping(method = RequestMethod.GET, value = "/customFeignService")
+  IntegrationResponse getCustomIntegrationResponse();
+
 }

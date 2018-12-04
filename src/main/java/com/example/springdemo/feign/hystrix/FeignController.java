@@ -31,4 +31,18 @@ public class FeignController {
     Thread.sleep(500);
     return "response from called";
   }
+
+
+  @GetMapping("/customFeignService")
+  public IntegrationResponse custome() throws Exception {
+    Thread.sleep(500);
+    return new IntegrationResponse("test", 30);
+  }
+
+
+  @GetMapping("/feign-custom-client")
+  public IntegrationResponse callercus() throws Exception {
+    return feignService.callCustomService();
+  }
+
 }

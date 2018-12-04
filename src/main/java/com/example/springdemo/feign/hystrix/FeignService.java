@@ -21,4 +21,7 @@ public class FeignService {
     return customFeignClient.getIntegrationResponse();
   }
 
+  public IntegrationResponse callCustomService() {
+    return customFeignClient.getCustomIntegrationResponse();
+  }
 }
