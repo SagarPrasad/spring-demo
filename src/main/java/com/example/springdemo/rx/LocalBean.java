@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016 JCPenney Co. All rights reserved.
+ * Copyright (c) 2016 Sagar Co. All rights reserved.
  *
  */
 
