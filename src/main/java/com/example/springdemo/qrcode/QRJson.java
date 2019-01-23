@@ -1,7 +1,3 @@
-/*
- * Copyright (c) 2018 JCPenney Co. All rights reserved.
- *
- */
 
 package com.example.springdemo.qrcode;
 
