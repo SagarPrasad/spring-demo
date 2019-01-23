@@ -43,6 +43,8 @@ dependencies {
 	implementation "io.reactivex.rxjava2:rxjava:2.2.3"
 	implementation("org.togglz:togglz-spring-boot-starter:2.6.1.Final")
 	implementation("org.togglz:togglz-console:2.6.1.Final")
+	implementation("com.google.zxing:core:3.3.3")
+	implementation("com.google.zxing:javase:3.3.3")
 
 /*
 	implementation('org.springframework.cloud:spring-cloud-starter-netflix-eureka-client')
